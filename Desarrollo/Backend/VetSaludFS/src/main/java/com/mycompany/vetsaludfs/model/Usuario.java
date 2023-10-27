@@ -1,7 +1,7 @@
 package com.mycompany.vetsaludfs.model;
 
 public class Usuario {
-    protected int id;
+    protected int idUsuario;
     protected String dni;
     protected String nombres;
     protected String apellidos;
@@ -15,8 +15,8 @@ public class Usuario {
         
     }
 
-    public int getId() {
-        return id;
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
     public String getDni() {
