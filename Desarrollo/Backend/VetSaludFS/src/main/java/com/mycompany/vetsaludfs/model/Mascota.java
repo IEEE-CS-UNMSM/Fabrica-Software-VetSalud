@@ -14,10 +14,8 @@ public class Mascota {
     protected char sexoMascota;
     protected String razaMascota;
     protected LocalDate fechaNacimientoMascota;
-    /*
-    protected   imagenMascota;
-    protected   evidenciaMascota;
-    */
+    protected  byte[] imagenMascota;
+    protected  byte[] evidenciaMascota;
 
     public int getIdMascota() {
         return idMascota;
@@ -69,6 +67,22 @@ public class Mascota {
 
     public void setFechaNacimientoMascota(LocalDate fechaNacimientoMascota) {
         this.fechaNacimientoMascota = fechaNacimientoMascota;
+    }
+
+    public byte[] getImagenMascota() {
+        return imagenMascota;
+    }
+
+    public void setImagenMascota(byte[] imagenMascota) {
+        this.imagenMascota = imagenMascota;
+    }
+
+    public byte[] getEvidenciaMascota() {
+        return evidenciaMascota;
+    }
+
+    public void setEvidenciaMascota(byte[] evidenciaMascota) {
+        this.evidenciaMascota = evidenciaMascota;
     }
     
 }
