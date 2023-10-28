@@ -16,6 +16,10 @@ public class Mascota {
     public int getIdMascota() {
         return idMascota;
     }
+    
+    public void setIdMascota(int idMascota) {
+        this.idMascota = idMascota;
+    }
 
     public int getIdUsuario() {
         return idUsuario;

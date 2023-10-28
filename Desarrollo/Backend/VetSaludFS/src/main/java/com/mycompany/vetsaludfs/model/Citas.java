@@ -12,6 +12,10 @@ public class Citas {
     public int getIdCita() {
         return idCita;
     }
+    
+    public void setIdCita(int idCita) {
+        this.idCita = idCita;
+    }
 
     public int getIdUsuario() {
         return idUsuario;
