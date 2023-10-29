@@ -1,12 +1,11 @@
 package com.mycompany.vetsaludfs;
 
 import java.sql.*;
-import javax.swing.JOptionPane;
 
 public class CConexion {
     private static Connection conectar = null;
     private static final String USUARIO = "root";
-    private static final String CONTRASENA = "root";
+    private static final String CONTRASENA = "";
     private static final String BD = "bd_veterinaria";
     private static final String IP = "localhost";
     private static final String PUERTO = "3306";
