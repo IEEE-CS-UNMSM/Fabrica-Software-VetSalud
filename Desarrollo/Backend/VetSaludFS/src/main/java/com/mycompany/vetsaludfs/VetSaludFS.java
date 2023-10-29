@@ -6,26 +6,35 @@ import com.mycompany.vetsaludfs.model.Mascota;
 import com.mycompany.vetsaludfs.model.Usuario;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VetSaludFS {
 
-    public static void main(String[] args) throws SQLException {
-        System.out.println("Hello World!");
-
+    public static void main(String[] args) throws SQLException {     
         DAOUsuario user = new DAOUsuario();
-        for (Usuario usuarios : user.listar()){
-            System.out.println("Nombres: " + usuarios.getNombres());
-            System.out.println("Apellidos: " + usuarios.getApellidos());
-        }
-        /*Mascota pet = new Mascota (); 
         DAOMascota pets = new DAOMascota();
-        pet.setIdUsuario(1);
-        pet.setNombreMascota("Bartolo");
-        pet.setEspecieMascota("Perro");
-        pet.setRazaMascota("Bulldog");
-        pet.setSexoMascota('M');
-        LocalDate hoy = LocalDate.now();
-        pet.setFechaNacimientoMascota(hoy);
-        pets.insertar(pet);*/
+        List<Mascota> pet = new ArrayList <>();        
+        Usuario usuario = user.obtenerUsuario("DNI");
+        
+        //Usuario
+        System.out.println("----------Informacion de cliente-----------");
+        System.out.println("Nombres: " + usuario.getNombres());
+        System.out.println("Apellidos: " + usuario.getApellidos());
+        System.out.println("DNI: " + usuario.getDni());
+        System.out.println("Email: " + usuario.getEmail());
+        System.out.println("Celular: " + usuario.getCelular());
+        
+        //Mascota o mascotas
+        pet = pets.obtenerMascotaPorIdUsuario(usuario.getIdUsuario());
+        System.out.println("----------Mascotas-----------");
+        
+        for (Mascota mascota : pet){
+            System.out.println("Nombre de la mascota: " + mascota.getNombreMascota());
+            System.out.println("Especie de la mascota: " + mascota.getEspecieMascota());
+            System.out.println("Raza de la mascota: " + mascota.getRazaMascota());
+            System.out.println("Sexo de la mascota: " + mascota.getSexoMascota());
+            System.out.println("Fecha de nacimiento de la mascota: " + mascota.getFechaNacimientoMascota());
+        }
     }
 }

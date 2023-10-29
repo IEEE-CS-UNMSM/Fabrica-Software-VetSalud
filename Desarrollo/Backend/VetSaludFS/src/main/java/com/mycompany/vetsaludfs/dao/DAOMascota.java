@@ -5,7 +5,9 @@ import com.mycompany.vetsaludfs.interfaces.InterfaceMascota;
 import com.mycompany.vetsaludfs.model.Mascota;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DAOMascota implements InterfaceMascota {
@@ -52,6 +54,35 @@ public class DAOMascota implements InterfaceMascota {
     @Override
     public List<Mascota> listar() throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public List<Mascota> obtenerMascotaPorIdUsuario(int idUser){
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Mascota pet = new Mascota();
+        List <Mascota> listPet = new ArrayList<>();
+        try{
+            conn = CConexion.estableceConexion();
+            stmt = conn.prepareStatement("SELECT * FROM tb_mascotas WHERE ID_USUARIO = ?");
+            stmt.setString(1, String.valueOf(idUser));
+            rs = stmt.executeQuery();
+            while(rs.next()){
+                pet.setIdMascota(rs.getInt("ID_MASCOTA"));
+                pet.setNombreMascota(rs.getString("NOMBRE_MASCOTA"));
+                pet.setEspecieMascota(rs.getString("ESPECIE_MASCOTA"));
+                pet.setSexoMascota(rs.getString("SEXO_MASCOTA").charAt(0));
+                pet.setRazaMascota(rs.getString("RAZA_MASCOTA"));
+                pet.setFechaNacimientoMascota(rs.getDate("FECHA_NACIMIENTO_MASCOTA").toLocalDate());
+                listPet.add(pet);
+            }
+        }catch(SQLException sql){
+            sql.printStackTrace();
+        }finally{
+            CConexion.close(stmt);
+            CConexion.close(rs);
+        }
+        return listPet;
     }
     
 }
