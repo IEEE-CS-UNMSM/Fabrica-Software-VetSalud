@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -89,7 +88,8 @@ h2 {
     text-align: center;
 }
 
-.registro-form .nombre,
+.registro-form .nombres,
+.registro-form .apellidos,
 .registro-form .direccion,
 .registro-form .email,
 .registro-form .password,
@@ -99,18 +99,13 @@ h2 {
     text-align: left;
 }
 
-.nombre input,
-.direccion input,
-.email input,
-.password input,
-.dni input,
-.numero input {
+.registro-form input {
     width: calc(100% - 6px);
     height: 30px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-top: 10px;
-    padding: 2px;
+    margin-top: 5px;
+    padding-left: 4px;
     border: none;
     border-bottom: 2px solid #3498db;
     outline: none;
@@ -202,15 +197,13 @@ h2 {
     .registro-container {
         max-width: 400px;
         width: 70%;
-        
     }
 
-    .nombre input,
-    .direccion input,
-    .email input,
-    .password input,
-    .dni input,
-    .numero input {
+    .registro-container h2 {
+        margin-bottom: 0;
+    }
+    
+    .registro-form input {
         height: 20px;
         font-size: 13px;
     }
