@@ -11,7 +11,7 @@ app.listen(app.get('port'), () =>{
     console.log('Servidor iniciado en el puerto', app.get('port') )
 })
 
-var publicPath = path.resolve(__dirname, './public/static')
+var publicPath = path.resolve(__dirname, './public')
 
 app.use(express.static(publicPath));
 
