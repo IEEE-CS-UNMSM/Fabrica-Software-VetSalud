@@ -1,6 +1,6 @@
 const express = require ('express')
 const morgan = require ('morgan')
-
+var path = require('path');
 const app = express();
 
 app.set('port', process.env.PORT || 4000);
@@ -11,7 +11,10 @@ app.listen(app.get('port'), () =>{
     console.log('Servidor iniciado en el puerto', app.get('port') )
 })
 
-app.use(express.static('./../Codificacion/Vista/static'))
+var publicPath = path.resolve(__dirname, './public/static')
+
+app.use(express.static(publicPath));
+
 app.use(require('./routes'))
 
 
