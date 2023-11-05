@@ -11,6 +11,8 @@ app.listen(app.get('port'), () =>{
     console.log('Servidor iniciado en el puerto', app.get('port') )
 })
 
+app.use(express.static('./../Codificacion/Vista/static'))
+app.use(require('./routes'))
 
 
 /*
