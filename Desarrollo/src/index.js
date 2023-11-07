@@ -17,7 +17,6 @@ app.use(express.static(publicPath));
 
 app.use(require('./routes'))
 
-
 /*
 var mysql = require ('mysql2')
 
