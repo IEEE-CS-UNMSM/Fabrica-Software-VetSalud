@@ -241,7 +241,7 @@ html {
 /*               BANNER               */
 /* ********************************** */
 .banner {
-	background-image: url("images/back.svg");
+	background-image: url("../static/images/back.svg");
 	height: 78rem;
 	background-size: cover;
 	background-position: center;
@@ -328,7 +328,7 @@ html {
 
 .category-usuario {
 	background-image: linear-gradient(#00000080, #00000080),
-		url('images/user.svg');
+		url('img/usuario.jpg');
 	background-size: cover;
 	background-position: bottom;
 	background-repeat: no-repeat;
@@ -336,7 +336,7 @@ html {
 
 .category-cita {
 	background-image: linear-gradient(#00000080, #00000080),
-		url('images/cita.jpg');
+		url('img/cita.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -344,7 +344,7 @@ html {
 
 .category-sede {
 	background-image: linear-gradient(#00000080, #00000080),
-		url('images/sede.jpg');
+		url('img/sede.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -352,7 +352,7 @@ html {
 
 .category-bonus {
 	background-image: linear-gradient(#00000080, #00000080),
-		url('images/bonus.webp');
+		url('img/bonus.webp');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

@@ -1,6 +1,7 @@
 const express = require ('express')
 const morgan = require ('morgan')
 var path = require('path');
+
 const app = express();
 
 app.set('port', process.env.PORT || 4000);
@@ -11,11 +12,14 @@ app.listen(app.get('port'), () =>{
     console.log('Servidor iniciado en el puerto', app.get('port') )
 })
 
-var publicPath = path.resolve(__dirname, './public')
+//Public
+app.use(express.static('./src/public'));
+app.use(express.static('./src/view'));
 
-app.use(express.static(publicPath));
-
+//Routes
 app.use(require('./routes'))
+
+
 
 /*
 var mysql = require ('mysql2')

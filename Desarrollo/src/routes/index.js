@@ -4,8 +4,7 @@ const router = express.Router();
 
 router.get('/', (req, res) => {
   const rutaAbsoluta = path.resolve(__dirname, '..', 'view', 'index.html');
-    res.sendFile(rutaAbsoluta);
+    res.sendFile('./src/view/index.html');
   });
-
 
 module.exports = router;
