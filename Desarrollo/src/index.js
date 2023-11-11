@@ -4,7 +4,7 @@ var path = require('path');
 
 const app = express();
 
-app.set('port', process.env.PORT || 4000);
+app.set('port', 4000);
 
 app.use(morgan('dev'));
 
@@ -12,32 +12,13 @@ app.listen(app.get('port'), () =>{
     console.log('Servidor iniciado en el puerto', app.get('port') )
 })
 
+// Configurar la ruta para obtener usuarios
+const obtenerUsuarios = require('./controllers/cliente.controller.js');
+app.get('/obtener-usuarios', obtenerUsuarios);
+
 //Public
 app.use(express.static('./src/public'));
 app.use(express.static('./src/view'));
 
 //Routes
 app.use(require('./routes'))
-
-
-
-/*
-var mysql = require ('mysql2')
-
-var conexion = mysql.createConnection({
-    host: 'localhost',
-    database: 'bd_veterinaria',
-    user: 'root',
-    password: ''
-});
-
-conexion.connect(function (error){
-    if (error){
-        throw error;
-    }else{
-        console.log('Conexion exitosa');
-    }
-});
-
-conexion.end();
-*/
