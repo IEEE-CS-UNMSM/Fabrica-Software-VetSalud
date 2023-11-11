@@ -13,7 +13,6 @@ function obtenerUsuarios(req, res) {
             res.status(500).json({ error: 'Error al obtener usuarios' });
         } else {
             console.log(results);
-            // Enviar las filas como respuesta JSON
             res.json(results);
   
             connection.end();
