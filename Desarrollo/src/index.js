@@ -17,8 +17,3 @@ app.use(express.static('./src/view'));
 
 //Routes
 app.use(require('./routes/routes.js'))
-
-// Configurar la ruta para obtener usuarios
-// const obtenerUsuarios = require('./controllers/cliente.controller.js');
-// app.get('/obtener-usuarios', obtenerUsuarios);
-
