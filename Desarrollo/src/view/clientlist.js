@@ -43,7 +43,7 @@ fetch('/obtener-usuarios')
     const tablaUsuarios = document.getElementById('tablaUsuarios');
     data.forEach(usuario => {
       const fila = `<tr class="tabla-row"><td class="tabla-cell">${usuario.Nombres}` +
-      `</td><td class="tabla-cell">${usuario}</td>` +
+      `</td><td class="tabla-cell">${usuario.DNI}</td>` +
       `</td><td class="tabla-cell">${usuario['Numero celular']}</td></tr>`;
       tablaUsuarios.innerHTML += fila;
     });

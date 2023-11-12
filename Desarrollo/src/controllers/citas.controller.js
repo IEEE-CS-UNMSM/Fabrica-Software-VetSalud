@@ -5,7 +5,6 @@ function obtenerCitas(req, res) {
     if (error) {
       res.status(500).json({ error: 'Error al obtener citas' });
     } else {
-      console.log(results); // Borrar console.log
       res.json(results);
     }
   });
