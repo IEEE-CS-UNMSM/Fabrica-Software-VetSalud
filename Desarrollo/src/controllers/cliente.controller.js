@@ -1,24 +1,14 @@
-const { createConnection } = require('../database/database.js');
+// controllers/cliente.controller.js
+const UserModel = require('../models/cliente.model');
 
 function obtenerUsuarios(req, res) {
-  const connection = createConnection();
-
-  connection.connect(function (error) {
+  UserModel.obtenerUsuarios((error, results) => {
     if (error) {
-      throw error;
+      res.status(500).json({ error: 'Error al obtener usuarios' });
     } else {
-      connection.query('SELECT * FROM tb_usuario', (err, results) => {
-        if (err) {
-            connection.end();
-            res.status(500).json({ error: 'Error al obtener usuarios' });
-        } else {
-            console.log(results);
-            res.json(results);
-  
-            connection.end();
-      }});
+      res.json(results);
     }
   });
 }
 
-module.exports = obtenerUsuarios;
+module.exports = { obtenerUsuarios };
