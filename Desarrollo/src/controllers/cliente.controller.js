@@ -1,4 +1,3 @@
-// controllers/cliente.controller.js
 const UserModel = require('../models/cliente.model');
 
 function obtenerUsuarios(req, res) {

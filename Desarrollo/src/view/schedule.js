@@ -2,7 +2,6 @@ $(document).ready(function() {
     fetch('/obtener-citas')
     .then(response => response.json())
     .then(data => {
-        // Formatear los datos obtenidos y agregarlos a calendarEvents
         const eventos = data.map(cita => {
             return {
                 id: cita.ID_CITA,
