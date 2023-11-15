@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="icon" href="static/images/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="static/perfilUser.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+</head>
+<body>
+    <header>
+        <div class="container-navbar">
+            <div class="logo">
+                <a href="">
+                    <img src="static/images/logo.svg" alt="">
+                    <p>VetSalud</p>
+                </a>
+            </div>
+            <i class="fa-solid fa-bars" id="menu-abrir"></i>
+            <nav class="navbar container" id="nav">
+                <i class="fa-solid fa-bars" id="menu-cerrar"></i>
+                <ul class="menu" id="menu-list">
+                    <li><a href="user.html">Inicio</a></li>
+                    <li><a href="#">Conócenos</a></li>
+                    <li><a href="#">Agendar una cita</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#"><img width="80" src="static/images/user.svg" alt=""></a></li>
+                    <li><a href="#" id="registro"><i class="fa-solid fa-right-from-bracket"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="principal">
+        <div class="contenedor">
+            <div class="photoUser">
+                <img id="fotoPerfil" src="static/images/user.svg" alt="FotoUsuario">
+                <input type="file" id="photo" name="photo" required style="display: none;">
+            </div>
+            <div class="datosUser">
+                <h2>Datos Personales</h2>
+                <form class="datos-form" action="#" method="post">
+                    <div class="datoP">
+                        <label for="nombre"><strong>Nombre : </strong><span id="nombre">Carlos</span></label>
+                    </div>
+                    <div class="datoP">
+                        <label for="apellido"><strong>Apellidos: </strong><span id="apellido">García Perez</span></label>
+                    </div>
+                    <div class="datoP">
+                        <label for="direccion"><strong>Dirección: </strong><span id="direccion">Calle Los Pinos 456, Surco</span></label>
+                    </div>
+                    <div class="datoP">
+                        <label for="dni"><strong>DNI: </strong><span id="dni">87654321</span></label>
+                    </div>
+                    <div class="datoP">
+                        <label for="celular"><strong>Celular: </strong><span id="celular">965432178</span></label>
+                    </div>
+
+                    <script>
+                        const icono = document.getElementById("fotoPerfil");
+                        const inputFoto = document.getElementById("photo");
+                                        
+                        icono.addEventListener("click", function () {
+                            inputFoto.click();
+                        });
+                    </script>
+
+                    <script>
+                        
+                        const nav = document.querySelector("#nav");
+                        const abrir = document.querySelector("#menu-abrir");
+                        const cerrar = document.querySelector("#menu-cerrar");
+                    
+                        abrir.addEventListener("click", () => {
+                          nav.classList.add("visible");
+                          nav.classList.toggle("action");
+                        });
+
+                        cerrar.addEventListener("click", () => {
+                          nav.classList.remove("visible");
+                        })
+                    </script>
+                </form>
+            </div>
+        </div>
+
+        <div class="mascotaRegistrada">
+            <h2>Mascotas Registradas</h2>
+        </div>
+        <div class="contenedor m">
+            <div class="anadirMascota">
+                <a href="registroMascota.html">
+                    <img id="addMascota" src="static/images/square-rounded-plus.svg" alt="addMascota">
+                </a>
+                <div class="dato">
+                    <label for="anadir"><strong></strong><span id="anadir">Añadir</span></label>
+                </div>
+            </div>
+            <div class="mascotaDatos M1">
+                <img id="fotoPerfil" src="static/images/fotoGato.svg" alt="PhotoMascota">
+                <div class="dato">
+                    <label for="nombre"><strong></strong><span id="nombre">Rufus</span></label>
+                    <label for="edad"><strong></strong><span id="edad">3 años</span></label>
+                </div>
+            </div>
+            <div class="mascotaDatos M2">
+                <img id="fotoPerfil" src="static/images/fotoGato.svg" alt="PhotoMascota">
+                <div class="dato">
+                    <label for="nombre"><strong></strong><span id="nombre">Teddy</span></label>
+                    <label for="edad"><strong></strong><span id="edad">3 años</span></label>
+                </div>
+            </div>
+            <div class="mascotaDatos M3">
+                <img id="fotoPerfil" src="static/images/fotoGato.svg" alt="PhotoMascota">
+                <div class="dato">
+                    <label for="nombre"><strong></strong><span id="nombre">Fido</span></label>
+                    <label for="edad"><strong></strong><span id="edad">3 años</span></label>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script
+			src="https://kit.fontawesome.com/81581fb069.js"
+			crossorigin="anonymous"
+		></script>
+
+		<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+		<!-- custom js file link  -->
+		<script src="js/script.js"></script>
+  </body>
+</html>
