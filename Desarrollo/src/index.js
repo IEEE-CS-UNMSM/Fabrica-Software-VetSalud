@@ -12,7 +12,7 @@ app.listen(app.get('port'), () =>{
 })
 
 //Public
-app.use(express.static('./src/public'));
+app.use(express.static('./src/public/static'));
 app.use(express.static('./src/view'));
 
 //Routes
