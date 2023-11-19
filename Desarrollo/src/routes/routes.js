@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
     res.sendFile('./src/view/index.html');
   });
 
-router.get('/obtener-usuarios', ClienteController.obtenerUsuarios);
+router.get('/obtener-usuarios', ClienteController.obtenerClientes);
+router.get('/obtener-detalle', ClienteController.obtenerDetallesCliente);
 router.get('/obtener-citas', CitasController.obtenerCitas);
 module.exports = router;

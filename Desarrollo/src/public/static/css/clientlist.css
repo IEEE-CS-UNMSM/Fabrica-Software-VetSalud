@@ -215,6 +215,16 @@ header {
     text-align: center;
 }
 
+.tabla-cell a{
+	color:#055492;
+	text-decoration: none;
+	transition: color 0.3s;
+}
+
+.tabla-cell a:hover{	
+	color:#087fda;
+}
+
 .tabla-row:nth-child(even) {
     background-color: #f0f0f0;
 }
