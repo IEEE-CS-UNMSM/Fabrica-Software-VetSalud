@@ -228,7 +228,7 @@ header {
     border-radius: 20px;
     min-width: 250px;
     height: 250px;
-    display: none;
+    /* display: none; */
 }
 
 .mascotaDatos img {
