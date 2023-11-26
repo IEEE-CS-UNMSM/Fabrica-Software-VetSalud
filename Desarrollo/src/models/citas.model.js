@@ -8,7 +8,7 @@ function obtenerCitas(callback) {
       return callback(error, null);
     }
 
-    connection.query('SELECT * FROM tb_citas', (err, results) => {
+    connection.query('SELECT * FROM vw_detallesconsulta', (err, results) => {
       connection.end();
       if (err) {
         return callback(err, null);

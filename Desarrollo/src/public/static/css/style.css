@@ -132,6 +132,24 @@ html {
 	position: relative;
 }
 
+.container-logo h1 a {
+	text-decoration: none;
+	color: #000;
+	font-size: 3rem;
+	text-transform: uppercase;
+	letter-spacing: -1px;
+}
+
+.container-navbar {
+	background-color: #055492;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10rem;
+	height: 100%;
+}
+
+
 .navbar {
 	display: flex;
 	align-items: center;
@@ -163,6 +181,7 @@ html {
 }
 
 #iniciar {
+	display: block;
     color: var(--primary-color);
     background-color: #A8F2FE;
     padding: 1.6rem;
@@ -170,6 +189,7 @@ html {
 }
 
 #registro {
+	display: block;
     padding: 1.6rem;
     border-radius: 20px;
     border: 2px solid var(--dark-color);
@@ -306,6 +326,7 @@ html {
 }
 
 .button-buscar{
+	text-decoration: none;
 	border: none;
 	cursor: pointer;
 }
@@ -328,7 +349,7 @@ html {
 
 .category-usuario {
 	background-image: linear-gradient(#00000080, #00000080),
-		url('img/usuario.jpg');
+		url('images/usuario.jpg');
 	background-size: cover;
 	background-position: bottom;
 	background-repeat: no-repeat;
@@ -336,7 +357,7 @@ html {
 
 .category-cita {
 	background-image: linear-gradient(#00000080, #00000080),
-		url('img/cita.jpg');
+		url('images/cita.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -344,7 +365,7 @@ html {
 
 .category-sede {
 	background-image: linear-gradient(#00000080, #00000080),
-		url('img/sede.jpg');
+		url('images/sede.jpg');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -352,7 +373,7 @@ html {
 
 .category-bonus {
 	background-image: linear-gradient(#00000080, #00000080),
-		url('img/bonus.webp');
+		url('images/bonus.webp');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

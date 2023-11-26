@@ -121,6 +121,7 @@ header {
 }
 
 #registro {
+    display: block;
     padding: 1.6rem;
     border-radius: 20px;
     border: 2px solid #ffffff;

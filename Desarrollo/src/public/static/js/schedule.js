@@ -4,10 +4,10 @@ $(document).ready(function() {
     .then(data => {
         const eventos = data.map(cita => {
             return {
-                id: cita.ID_CITA,
-                name: "Nombre",
-                date: cita.FECHA_HORA_CITA,
-                description: cita.MOTIVO_CITA,
+                id: cita.id,
+                name: cita.Motivo,
+                date: cita['Fecha Cita'],
+                description: "Dueño: " + cita.Nombre + "<br>"+cita.Mascota + "<br>" + cita['Numero contacto'],
                 type: "schedule appointment"
             };
         });

@@ -234,9 +234,10 @@ h2 {
 	font-size: 15px;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 }
 
-.fecha input {
+.fecha input, .fecha select {
 	height: 35px;
 	margin-left: 10px;
 	background-color:#3498db;
@@ -263,7 +264,7 @@ h2 {
 	align-items: center;
 }
 
-.photo-mascota #iconoMascota {
+.photo-mascota #iconoMascota{ 
 	height: 80px;
 	cursor: pointer;
 }
@@ -367,6 +368,5 @@ h2 {
 	#btnIngresar {
 		font-size: 17px;
 	}
-
 	
 }
