@@ -7,6 +7,7 @@
     <link rel="icon" href="images/logo.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/registroMascota.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
     <header>
@@ -35,7 +36,7 @@
         <div class="contenedor">
             <div class="ingreso-container">
                 <h2>Datos Mascota</h2>
-                <form class="ingreso-form" action="#" method="post">
+                <form class="ingreso-form" id="mascotaForm" action="/registroMascota/:usuarioId" method="post" enctype="multipart/form-data">
                     <div class="nombre">
                         <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
                     </div>
@@ -54,10 +55,14 @@
                         <label>Fecha de Nacimiento<input type="date" id="fecha" name="fecha" placeholder="Fecha" required></label>
                     </div>
                     <div class="photo-mascota">
-                        <img id="iconoMascota" src="images/photo-up.svg" alt="FotoMascota">
-                        <input type="file" id="photo" name="photo" required style="display: none;">
+                        <label for="foto" alt="FotoMascota">Foto de la Mascota</label>
+                        <input type="file" id="photo" name="photo" accept=".jpg, .jpeg, .png" required>
                     </div>
-
+                    <div class="evidencia-mascota">
+                        <label for="evidencias">Evidencias (PDF o Imágenes)</label>
+                        <input type="file" id="evidencia" name="evidence" accept=".pdf, .jpg, .jpeg, .png" multiple required>
+                    </div>                    
+                    
                     <script>
                         const icono = document.getElementById("iconoMascota");
                         const inputFoto = document.getElementById("photo");
@@ -82,10 +87,38 @@
                           nav.classList.remove("visible");
                         })
                     </script>
-  
-
-                    <button id="btnIngresar" type="button" >Registrar Mascota</button>
+                    <button id="btnIngresar" type="submit" >Registrar Mascota</button>
                 </form>
+                <script>
+                    function obtenerUsuarioId() {
+                      // Obtener la URL actual
+                      const url = window.location.href;
+                  
+                      // Buscar el patrón ":usuarioId" en la URL
+                      const match = url.match(/\/registroMascota\/([^/]+)$/);
+                  
+                      // Si hay una coincidencia, devuelve el valor capturado (:usuarioId)
+                      if (match) {
+                        return match[1];
+                      }
+                      // Si no hay coincidencia o el valor no se puede encontrar, devuelve null o maneja el error según sea necesario.
+                      return null;
+                    }
+                  
+                    document.getElementById("mascotaForm").addEventListener("submit", function(event) {
+                      // Obtener el usuarioId
+                      const usuarioId = obtenerUsuarioId();
+                  
+                      // Actualizar la acción del formulario con el usuarioId
+                      if (usuarioId) {
+                        this.action = `/registroMascota/${usuarioId}`;
+                      } else {
+                        // Manejar el error o mostrar un mensaje al usuario si no se puede obtener el usuarioId
+                        event.preventDefault(); // Detener el envío del formulario si no se puede obtener el usuarioId
+                        alert("No se puede obtener el usuarioId del URL");
+                      }
+                    });
+                </script>                  
             </div>
         </div>
     </section>
@@ -99,5 +132,6 @@
 
 		<!-- custom js file link  -->
 		<script src="js/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>

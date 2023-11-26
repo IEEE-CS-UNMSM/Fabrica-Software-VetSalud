@@ -41,19 +41,19 @@
                 <h2>Datos Personales</h2>
                 <form class="datos-form" action="#" method="post">
                     <div class="datoP">
-                        <label for="nombre"><strong>Nombre : </strong><span id="nombre">Carlos</span></label>
+                        <label for="nombre"><strong>Nombre : </strong><span id="nombre">{{usuario.NOMBRES_USUARIO}}</span></label>
                     </div>
                     <div class="datoP">
-                        <label for="apellido"><strong>Apellidos: </strong><span id="apellido">García Perez</span></label>
+                        <label for="apellido"><strong>Apellidos: </strong><span id="apellido">{{usuario.APELLIDOS_USUARIO}}</span></label>
                     </div>
                     <div class="datoP">
-                        <label for="direccion"><strong>Dirección: </strong><span id="direccion">Calle Los Pinos 456, Surco</span></label>
+                        <label for="direccion"><strong>Dirección: </strong><span id="direccion">{{usuario.DIRECCION_USUARIO}}</span></label>
                     </div>
                     <div class="datoP">
-                        <label for="dni"><strong>DNI: </strong><span id="dni">87654321</span></label>
+                        <label for="dni"><strong>DNI: </strong><span id="dni">{{usuario.DNI_USUARIO}}</span></label>
                     </div>
                     <div class="datoP">
-                        <label for="celular"><strong>Celular: </strong><span id="celular">965432178</span></label>
+                        <label for="celular"><strong>Celular: </strong><span id="celular">{{usuario.CELULAR_USUARIO}}</span></label>
                     </div>
 
                     <script>
@@ -86,38 +86,17 @@
 
         <div class="mascotaRegistrada">
             <h2>Mascotas Registradas</h2>
-        </div>
-        <div class="contenedor m">
-            <div class="anadirMascota">
-                <a href="registroMascota.html">
+            <div class="contenedor m">
+                <div class="anadirMascota">
+                  <a href="/registroMascota/{{usuario.ID_USUARIO}}">
                     <img id="addMascota" src="images/square-rounded-plus.svg" alt="addMascota">
-                </a>
-                <div class="dato">
-                    <label for="anadir"><strong></strong><span id="anadir">Añadir</span></label>
+                  </a>
+                  <div class="dato">
+                    <label for="anadir"><strong></strong><span id="anadir">Actualmente registrados</span></label>
+                  </div>
                 </div>
-            </div>
-            <div class="mascotaDatos M1">
-                <img id="fotoPerfil" src="images/fotoGato.svg" alt="PhotoMascota">
-                <div class="dato">
-                    <label for="nombre"><strong></strong><span id="nombre">Rufus</span></label>
-                    <label for="edad"><strong></strong><span id="edad">3 años</span></label>
-                </div>
-            </div>
-            <div class="mascotaDatos M2">
-                <img id="fotoPerfil" src="images/fotoGato.svg" alt="PhotoMascota">
-                <div class="dato">
-                    <label for="nombre"><strong></strong><span id="nombre">Teddy</span></label>
-                    <label for="edad"><strong></strong><span id="edad">3 años</span></label>
-                </div>
-            </div>
-            <div class="mascotaDatos M3">
-                <img id="fotoPerfil" src="images/fotoGato.svg" alt="PhotoMascota">
-                <div class="dato">
-                    <label for="nombre"><strong></strong><span id="nombre">Fido</span></label>
-                    <label for="edad"><strong></strong><span id="edad">3 años</span></label>
-                </div>
-            </div>
-        </div>
+                {{mascotas}} <!-- Marcador de posición para las mascotas -->
+              </div>
     </section>
 
     <script

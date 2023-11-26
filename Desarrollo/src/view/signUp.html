@@ -22,7 +22,7 @@
         <div class="contenedor">
             <div class="registro-container">
                 <h2>Crear Cuenta</h2>
-                <form class="registro-form" action="#" method="post">
+                <form class="registro-form" action="/signUp.html" method="post">
                     <div class="nombres">
                         <input type="text" id="nombres" name="nombres" placeholder="Nombres" required>
                     </div>
@@ -44,7 +44,7 @@
                     <div class="password">
                         <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña (mínimo 8 caracteres)" minlength="8" required>
                     </div>
-                    <button id="btnRegistrarse" type="button" >Registrarse</button>
+                    <button id="btnRegistrarse" type="submit" >Registrarse</button>
                 </form>
             </div>
         </div>
@@ -56,6 +56,19 @@
             <button id="aceptar">Aceptar</button>
         </a>
     </dialog>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.registro-form');
+            const mensajeDialog = document.getElementById('mensaje');
+
+            form.addEventListener('submit', function(event) {
+                //event.preventDefault();
+                mensajeDialog.showModal();
+            });
+        });
+    </script>
+
   </body>
-  <script src="js/signUpValidacion.js"></script>
+  <script src="/js/signUpValidacion.js"></script>
 </html>
