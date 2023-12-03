@@ -20,6 +20,7 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
+const amqp = require('amqplib');
 
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
@@ -95,7 +96,6 @@ router.post('/login.html', async (req, res) => {
   });
 });
 
-//routes.js
 router.get('/perfilUser/:usuarioId', async (req, res) => {
   const usuarioId = req.params.usuarioId;
   console.log(usuarioId);
@@ -169,7 +169,7 @@ router.get('/registroMascota/:usuarioId', async (req, res) => {
 });
 
 router.post('/registroMascota/:usuarioId', upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'evidence', maxCount: 1 }]), async (req, res) => {
-  const usuarioId = 19;
+  const usuarioId = req.params.usuarioId;
   console.log(usuarioId);
   const { nombre, tipo, raza, sexo, fecha } = req.body;
 
@@ -190,6 +190,48 @@ router.post('/registroMascota/:usuarioId', upload.fields([{ name: 'photo', maxCo
   });
 });
 
+router.get('/registrarCita/:usuarioId', async (req, res) => {
+  const usuarioId = req.params.usuarioId;
+  console.log(usuarioId);
+  // Obtén las mascotas del usuario
+  ClienteController.obtenerMascotasPorUsuario(usuarioId, async (errorMascotas, mascotas) => {
+    if (errorMascotas) {
+      return res.status(500).json({ error: 'Error al obtener mascotas del usuario' });
+    }
+
+    // Lee el contenido del archivo HTML
+    const filePath = path.join(__dirname, '..', 'view', 'registrarCita.html');
+    let htmlContent = fs.readFileSync(filePath, 'utf-8');
+
+    // Genera dinámicamente las opciones del menú desplegable
+    let opcionesMascotas = '';
+    mascotas.forEach((mascota) => {
+      opcionesMascotas += `<option value="${mascota.ID_MASCOTA}">${mascota.NOMBRE_MASCOTA}</option>`;
+    });
+
+    // Reemplaza el marcador de posición en el HTML con las opciones generadas
+    htmlContent = htmlContent.replace('{{opcionesMascotas}}', opcionesMascotas);
+
+    // Enviar el archivo HTML modificado al cliente
+    res.send(htmlContent);
+  });
+});
+
+router.post('/registrarCita/:usuarioId', async (req, res) => {
+  const usuarioId = req.params.usuarioId;
+  console.log(usuarioId);
+  const { motivo, mascotas, fecha } = req.body; 
+
+  if (!motivo || !mascotas || !fecha) {
+    return res.status(400).json({ error: 'Faltan datos obligatorios' });
+  }
+  CitasController.registrarCita(usuarioId, mascotas, fecha, motivo, (error, resultado) => {
+    if (error) {
+      return res.status(500).json({ error: 'Error al registrar la cita' });
+    }
+    res.redirect(`/perfilUser/${usuarioId}`);
+  });
+});
 
 router.get('/obtener-usuarios', ClienteController.obtenerUsuarios);
 router.get('/obtener-citas', CitasController.obtenerCitas);
