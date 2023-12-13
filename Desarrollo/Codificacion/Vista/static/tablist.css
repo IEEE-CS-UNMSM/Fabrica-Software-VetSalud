@@ -223,8 +223,69 @@ header {
     background-color: #e0e0e0;
 }
 
+#mensaje::backdrop {
+    background-color: rgba(0, 0, 0, .55);
+}
 
+#mensaje {
+    background-color: #fff;
+    width: 550px;
+	height: 400px;
+    padding: 20px;
+	text-align: center;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
 
+#detalleConsulta {
+	margin-bottom: 20px;
+	margin-top: 20px;
+    padding: 15px 10px;
+}
+
+#detalleConsulta h1 {
+	text-align: center;
+    color: #055492;
+	font-size: 30px;
+	margin-bottom: 30px;
+}
+
+#detalleConsulta .datoP {
+	font-size: 20px;
+	margin-bottom: 15px;
+	text-align: start;
+}
+
+#aceptar {
+    background-color: #3498db;
+    color: #fff;
+    font-size: 15px;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.detalles-abrir {
+	margin-left: 10px;
+	font-size: 2rem;
+	cursor: pointer;
+	transition: opacity 0.3s, visibility 0.3s;
+}
+
+.detalle-form .datoP{
+    width: 100%;
+    margin: 9px 0;
+}
+
+.datoP label {
+    width: 100%;
+}
 
 
 
