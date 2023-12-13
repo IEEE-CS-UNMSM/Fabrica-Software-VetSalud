@@ -45,6 +45,7 @@
             <thead>
                 <tr>
                     <th class="tabla-header">Nombre Mascota</th>
+                    <th class="tabla-header">Propietario</th>
                     <th class="tabla-header">Fecha</th>
                     <th class="tabla-header">Detalles</th>
                 </tr>
@@ -52,22 +53,44 @@
             <tbody>
                 <tr class="tabla-row">
                     <td class="tabla-cell">Mascota 1</td>
+                    <td class="tabla-cell">Dueño 1</td>
                     <td class="tabla-cell">03/09/2023</td>
-                    <td class="tabla-cell">Atendido</td>
+                    <td class="tabla-cell">Atendido <i class="fa-solid fa-bars detalles-abrir"></i></td>
                 </tr>
                 <tr class="tabla-row">
                     <td class="tabla-cell">Mascota 2</td>
+                    <td class="tabla-cell">Dueño 2</td>
                     <td class="tabla-cell">11/10/2023</td>
-                    <td class="tabla-cell">Atendido</td>
+                    <td class="tabla-cell">Atendido <i class="fa-solid fa-bars detalles-abrir"></i></td>
                 </tr>
                 <tr class="tabla-row">
                     <td class="tabla-cell">Mascota 1</td>
+                    <td class="tabla-cell">Dueño 1</td>
                     <td class="tabla-cell">15/01/2024</td>
-                    <td class="tabla-cell">Por atender</td>
+                    <td class="tabla-cell">Por atender <i class="fa-solid fa-bars detalles-abrir"></i></td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <dialog id="mensaje">
+        <div id="detalleConsulta">
+            <h1>Detalles de Consulta</h1>
+            <form class="detalle-form" action="#" method="post"></form>
+                <div class="datoP">
+                    <label for="antecedente"><strong>Antecedentes : </strong><span id="antecedente">#####</span></label>
+                </div>
+                <div class="datoP">
+                    <label for="diagnostico"><strong>Diagnostico : </strong><span id="diagnostico">#####</span></label>
+                </div>
+                <div class="datoP">
+                    <label for="tratamiento"><strong>Tratamiento : </strong><span id="tratamiento">#####</span></label>
+                </div>
+        </div>
+        <a href="#">
+            <button id="aceptar">Aceptar</button>
+        </a>
+    </dialog>
 
     <script
 			src="https://kit.fontawesome.com/81581fb069.js"
@@ -78,5 +101,6 @@
 
 		<!-- custom js file link  -->
 		<script src="tablist.js"></script>
+        <script src="details-tablist.js"></script>
   </body>
 </html>
