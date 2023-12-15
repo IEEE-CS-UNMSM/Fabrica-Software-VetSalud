@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Cuenta</title>
-    <link rel="icon" href="images/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="css/signUp.css">
+    <link rel="icon" href="/images/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/css/signUp.css">
 </head>
 <body>
     <section class="ventana">
         <div class="registro-bienvenida">
             <div class="logo">
-                <img src="images/logo.svg" alt="VetSalud">
+                <img src="/images/logo.svg" alt="VetSalud">
                 <p>VetSalud</p>
             </div>
             <div class="bienvenida">
@@ -22,7 +22,7 @@
         <div class="contenedor">
             <div class="registro-container">
                 <h2>Crear Cuenta</h2>
-                <form class="registro-form" action="#" method="post">
+                <form class="registro-form" action="/signUp.html" method="post">
                     <div class="nombres">
                         <input type="text" id="nombres" name="nombres" placeholder="Nombres" required>
                     </div>
@@ -44,9 +44,9 @@
                     <div class="password">
                         <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña (mínimo 8 caracteres)" minlength="8" required>
                     </div>
-                    <button id="btnRegistrarse" type="button" >Registrarse</button>
+                    <button id="btnRegistrarse" type="submit" >Registrarse</button>
                     <div class="link-login" >
-                        <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+                        <p>¿Ya tienes una cuenta? <a href="login">Inicia sesión</a></p>
                     </div>
                 </form>
             </div>
@@ -54,11 +54,21 @@
     </section>
     
     <dialog id="mensaje">
-        <p>Se ha enviado un mensaje al correo electrónico para validar el registro</p>
-        <a href="index.html">
+        <p>¡Registrado! Se ha enviado un mensaje al correo electrónico para validar el registro</p>
+        <a href="/login">
             <button id="aceptar">Aceptar</button>
         </a>
     </dialog>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.registro-form');
+            const mensajeDialog = document.getElementById('mensaje');
+            form.addEventListener('submit', function(event) {
+                //event.preventDefault();
+                mensajeDialog.showModal();
+            });
+        });
+    </script>
   </body>
   <script src="js/signUpValidacion.js"></script>
 </html>

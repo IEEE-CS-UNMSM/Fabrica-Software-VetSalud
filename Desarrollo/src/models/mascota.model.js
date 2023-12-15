@@ -40,6 +40,7 @@ function obtenerDetallesMascota (idCliente, callback) {
           }
           
           const datosCliente = results[0];
+          
           return callback(null, datosCliente);
         });
     });
