@@ -145,7 +145,7 @@ router.get('/perfilUser/:usuarioId', async (req, res) => {
 
       // Reemplazar el marcador de posición de mascotas en el HTML
       htmlContent = htmlContent.replace('{{mascotas}}', mascotasHTML);
-
+      htmlContent = htmlContent.replace('{{usuario.ID_USUARIO}}', usuario.ID_USUARIO);
       // Enviar el archivo HTML modificado al cliente
       res.send(htmlContent);
     });
@@ -223,7 +223,7 @@ router.post('/registrarCita/:usuarioId', async (req, res) => {
   const { motivo, mascotas, fecha } = req.body; 
 
   if (!motivo || !mascotas || !fecha) {
-    return res.status(400).json({ error: 'Faltan datos obligatorios' });
+    return res.json({ message: 'Faltan datos obligatorios' });
   }
   CitasController.registrarCita(usuarioId, mascotas, fecha, motivo, (error, resultado) => {
     if (error) {
