@@ -13,6 +13,7 @@ function obtenerCitas(callback) {
       if (err) {
         return callback(err, null);
       }
+      results = results.map((resultado, index) => ({ ...resultado, id: index + 1 }));
 
       return callback(null, results);
     });

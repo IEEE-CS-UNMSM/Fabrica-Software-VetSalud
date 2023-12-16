@@ -3,6 +3,7 @@ $(document).ready(function() {
     .then(response => response.json())
     .then(data => {
         const eventos = data.map(cita => {
+            
             return {
                 id: cita.id,
                 name: cita.Motivo,

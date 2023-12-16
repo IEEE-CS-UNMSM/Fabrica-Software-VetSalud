@@ -79,7 +79,31 @@ function obtenerUsuarioPorId(usuarioId, callback) {
           }
 
           if (results.length === 0) {
-              return callback(null, null); // Usuario no encontrado
+              return callback(null, null);
+          }
+
+          const usuario = results[0];
+          return callback(null, usuario);
+      });
+  });
+}
+
+function obtenerUsuarioPorDni(usuarioId, callback) {
+  const connection = createConnection();
+
+  connection.connect((error) => {
+      if (error) {
+          return callback(error, null);
+      }
+
+      connection.query('SELECT * FROM TB_USUARIO WHERE DNI_USUARIO = ?', [usuarioId], (err, results) => {
+          connection.end();
+          if (err) {
+              return callback(err, null);
+          }
+
+          if (results.length === 0) {
+              return callback(null, null);
           }
 
           const usuario = results[0];
@@ -137,4 +161,4 @@ function obtenerMascotasPorUsuario(usuarioId, callback) {
   });
 }
 
-module.exports = { obtenerDetallesCliente, obtenerClientes, registrarUsuario, obtenerUsuarioPorCorreo, obtenerUsuarioPorId, registrarMascota, obtenerMascotasPorUsuario };
+module.exports = { obtenerDetallesCliente, obtenerClientes, registrarUsuario, obtenerUsuarioPorCorreo, obtenerUsuarioPorId, registrarMascota, obtenerMascotasPorUsuario, obtenerUsuarioPorDni };

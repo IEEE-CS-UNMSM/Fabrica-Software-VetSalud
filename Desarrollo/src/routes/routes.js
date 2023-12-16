@@ -177,7 +177,7 @@ router.get('/clientes', ClienteController.obtenerClientes);
 router.get('/clientes/info/:id', async (req, res) => {
   const usuarioId = req.params.id;
   console.log(usuarioId);
-  ClienteController.obtenerUsuarioPorId(usuarioId, async (error, usuario) => {
+  ClienteController.obtenerUsuarioPorDni(usuarioId, async (error, usuario) => {
     if (error) {
       return res.status(500).json({ error: 'Error al obtener datos del usuario' });
     }
@@ -185,7 +185,7 @@ router.get('/clientes/info/:id', async (req, res) => {
     if (!usuario) {
       return res.status(404).json({ error: 'Usuario no encontrado' });
     }
-    ClienteController.obtenerMascotasPorUsuario(usuarioId, async (errorMascotas, mascotas) => {
+    ClienteController.obtenerMascotasPorUsuario(usuario.ID_USUARIO, async (errorMascotas, mascotas) => {
       if (errorMascotas) {
         return res.status(500).json({ error: 'Error al obtener mascotas del usuario' });
       }
@@ -199,6 +199,7 @@ router.get('/clientes/info/:id', async (req, res) => {
     });
   });
 });
+
 
 router.get('/citas', (req, res) => {
   res.render(path.join(__dirname, '..','view', 'citasProgramadas'));

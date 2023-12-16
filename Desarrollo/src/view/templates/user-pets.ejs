@@ -81,7 +81,8 @@
               <div class="dato">
                 <label for="nombre"><strong id="nombre"><%= mascota.NOMBRE_MASCOTA %></strong></label>
                 <span> <label for="especie"><span id="especie"><%= mascota.ESPECIE_MASCOTA %></span> | </label>
-                <label for="sexo"><span id="sexo"><%= mascota.SEXO_MASCOTA %></span></label></span>
+                <%= mascota.SEXO_MASCOTA = (mascota.SEXO_MASCOTA === 'M') ? 'Macho' : 'Hembra';%>
+                <label for="sexo"><span id="sexo"> </span></label></span>
                 <label for="fechanacimiento"><span id="fechanacimiento"><%= formatoFecha(mascota.FECHA_NACIMIENTO_MASCOTA) %></span></label>
               </div>
             </div>
