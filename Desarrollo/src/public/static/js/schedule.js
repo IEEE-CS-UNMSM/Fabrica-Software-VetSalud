@@ -5,7 +5,7 @@ $(document).ready(function() {
         const eventos = data.map(cita => {
             
             return {
-                id: cita.id,
+                id: cita.Id,
                 name: cita.Motivo,
                 date: cita['Fecha Cita'],
                 description: "Dueño: " + cita.Nombre + "<br>"+cita.Mascota + "<br>" + cita['Numero contacto'],

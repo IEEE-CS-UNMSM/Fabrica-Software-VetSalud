@@ -6,49 +6,38 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <body>
+    <!-- Div para oscurecer el fondo -->
     <div id="overlay"></div>
 
     <!-- Pop-up para agregar ficha -->
-    <div id="popup">
+    <dialog id="mensaje">
         <!-- Contenido del pop-up -->
         <div id="popup-content">
             <div class="contenedor">
                 <div class="ingreso-container">
                     <h2>Ficha Médica</h2>
-                    <form class="ingreso-form" action="#" method="post">
-                        <div class="nombre">
-                            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
-                        </div>
-                        <div class="tipo">
-                            <input type="text" id="tipo" name="tipo" placeholder="Tipo" required>
-                        </div>
-                        <div class="sexo-raza">
-                            <div class="raza">
-                                <input type="text" id="raza" name="raza" placeholder="Raza" required>
+                    <form class="ingreso-form" action="/registrarFicha" method="post">
+
+                            <div class="nombre">
+                                <input type="text" id="chequeo" name="chequeo" placeholder="Antecedentes" required>
                             </div>
-                            <div class="sexo">
-                                <input type="text" id="sexo" name="sexo" placeholder="Sexo" required>
+
+                            <div class="nombre">
+                                <input type="text" id="diag" name="diag" placeholder="Diagnóstico" required>
                             </div>
-                        </div>
-                        <div class="fecha">
-                            <label>Fecha de Nacimiento<input type="date" id="fecha" name="fecha" placeholder="Fecha" required></label>
-                        </div>
-                        <div class="nombre">
-                            <input type="text" id="chequeo" name="chequeo" placeholder="Chequeo" required>
-                        </div>
-                        <div class="nombre">
-                            <input type="text" id="diag" name="diag" placeholder="Diagnóstico" required>
-                        </div>
-                        <div class="nombre">
-                            <input type="text" id="trat" name="trat" placeholder="Tratamiento" required>
-                        </div>
-                        <button id="btnIngresar" type="button" >Guardar</button>
-                    </form>
+
+                            <div class="nombre">
+                                <input type="text" id="trat" name="trat" placeholder="Tratamiento" required>
+                            </div>
+        
+                            <button id="btnIngresar" type="submit" >Guardar</button>
+                        </form>
                 </div>
             </div>
             <button id="cerrar-popup">Cerrar</button>
         </div>
-    </div>
+    </dialog>
+
    
     <%- include ("templates/admin.header.ejs") %>;
     <div class="content-container">
@@ -64,21 +53,23 @@
 	></script>
 
     <script>
+        var citaId;
         $(document).ready(function() {
-            // Mostrar el pop-up al hacer clic en el botón "Agregar Ficha"
-            $(document).on('click', '#btn-agregar', function() {
-                $('#overlay').show();
-                $('#popup').show();
-            });
-
-            // Cerrar el pop-up al hacer clic en el botón "Cerrar"
             $(document).on('click', '#cerrar-popup', function() {
-                $('#overlay').hide();
-                $('#popup').hide();
-            });
+            $('#overlay').hide();
+            mensaje.close();
+        });
+            
+        });
+        $('#calendar').on('selectEvent', function(event, activeEvent) {
+            
+            $('#overlay').show();
+            citaId = activeEvent.id;
+            console.log(citaId);
+            mensaje.showModal();
         });
     </script>
-    
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/schedule.js"> </script>
     
   </body>

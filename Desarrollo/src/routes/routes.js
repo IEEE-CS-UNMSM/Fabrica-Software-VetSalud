@@ -308,6 +308,25 @@ router.post('/registrarCita', async (req, res) => {
   });
 });
 
+router.post('/registrarFicha`;', async (req, res) => {
+  const citaId = req.query.citaId;
+  console.log(usuarioId);
+
+  const { chequeo, diag, trat } = req.body;
+
+  console.log('Datos recibidos:', { usuarioId, chequeo, diag, trat });
+
+
+  FichaMedicaController.guardarFichaMedica(usuarioId, chequeo, diag, trat, (error, resultado) => {
+    if (error) {
+      console.error('Error al registrar los datos:', error);
+      return res.status(500).json({ error: 'Error al registrar los datos' });
+    }
+    console.log('Datos registrados correctamente');
+    res.redirect(`/fichasMedicas`);
+  });
+});
+
 router.get('/logout', (req, res) => {
   res.clearCookie('jwt');
   res.redirect('/login');
