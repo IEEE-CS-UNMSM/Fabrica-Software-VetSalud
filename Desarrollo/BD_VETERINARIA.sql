@@ -150,8 +150,11 @@ SELECT
 	M.NOMBRE_MASCOTA AS 'Nombre Mascota',
     CONCAT(SUBSTRING_INDEX(NOMBRES_USUARIO, ' ', 1), ' ', SUBSTRING_INDEX(APELLIDOS_USUARIO, ' ', 1)) AS 'Propietario',
     F.FECHA_CREACION AS 'Fecha',
-    CONCAT( 'Diagnóstico: ', F.DIAGNOSTICO, '\n', 'Tratamiento: ', F.TRATAMIENTO) AS 'Detalle consulta'
-	
+    CONCAT( 'Diagnóstico: ', F.DIAGNOSTICO, '\n', 'Tratamiento: ', F.TRATAMIENTO) AS 'Detalle consulta',
+	F.ID_FICHA AS 'IdFicha',
+    F.DIAGNOSTICO AS 'Diagnostico',
+	F.TRATAMIENTO AS 'Tratamiento',
+    F.ANTECEDENTES AS 'Antecedentes'
 FROM 
 	TB_FICHA_MEDICA F INNER JOIN TB_CITAS C 
     ON F.ID_CITA = C.ID_CITA INNER JOIN TB_MASCOTAS M 

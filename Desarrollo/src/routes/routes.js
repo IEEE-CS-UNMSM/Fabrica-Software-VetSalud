@@ -94,7 +94,7 @@ router.post('/login.html', async (req, res) => {
       const payload = {
         sub: usuario.ID_USUARIO,
         rol: usuario.ROL_USUARIO,
-        otroAtributo: "valor"  // Puedes agregar más atributos según tus necesidades
+        otroAtributo: "valor"  // Puedes agregar más atributos
       };
       const jwtConstructor = new SignJWT({rol: usuario.ROL_USUARIO}).setSubject(usuario.ID_USUARIO);
 
@@ -207,6 +207,10 @@ router.get('/citas', (req, res) => {
 
 router.get('/fichasMedicas', FichaMedicaController.obtenerFichasMedicas);
 
+router.get('/citas', (req, res) => {
+  res.render(path.join(__dirname, '..','view', 'citasProgramadas'));
+});
+
 // clientes
 
 router.get('/user', (req, res) => {
@@ -312,6 +316,7 @@ router.get('/logout', (req, res) => {
   res.clearCookie('jwt');
   res.redirect('/login');
 });
+
 
 router.get('/obtener-usuarios', ClienteController.obtenerClientes);
 router.get('/obtener-detalle', ClienteController.obtenerDetallesCliente);
