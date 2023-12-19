@@ -15,6 +15,7 @@ const fs = require('fs');
 const { formatoFecha } = require('../services/utilidades');
 const multer = require('multer');
 const cookieParser = require ("cookie-parser");
+const { Script } = require('vm');
 
 const uploadDir = path.join(__dirname, 'uploads');
 
@@ -70,7 +71,7 @@ router.post('/signUp.html', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '..','view', 'login.html'));
+  res.render(path.join(__dirname, '..','view', 'login.ejs'));
 });
 
 router.post('/login.html', async (req, res) => {
@@ -81,14 +82,12 @@ router.post('/login.html', async (req, res) => {
       return res.status(500).json({ error: 'Error al buscar usuario' });
     }
     if (!usuario) {
-      res.send('<script>alert("Credenciales de correo incorrectas"); window.location="/login";</script>');
-      return;
+      return res.status(401).json({ error: 'Credenciales de correo incorrectas' });
     }
     const contrasenaValida = await bcrypt.compare(contrasena, usuario.PASSWORD_USUARIO);
 
     if (!contrasenaValida) {
-      res.send('<script>alert("Credenciales de contraseña incorrectas");window.location="/login";</script>');
-      return;
+      return res.status(401).json({ error: 'Credenciales de correo incorrectas' });
     } else{
       console.log('Inicio de sesion con exito, redireccionando ...');
       const payload = {
@@ -309,6 +308,22 @@ router.post('/registrarCita', async (req, res) => {
     }
     res.send('<script>alert("¡Cita programada correctamente para tu mascota!"); window.location="/user";</script>');
     return;
+  });
+});
+
+router.post('/registrarFicha', async (req, res) => {
+  const { citaId, fecha, antc, diag, trat } = req.body;
+
+  console.log('Datos recibidos:', { citaId, fecha, antc, diag, trat });
+
+
+  FichaMedicaController.guardarFichaMedica(req, res,{citaId, fecha, antc, diag, trat}, (error, resultado) => {
+    if (error) {
+      console.error('Error al registrar los datos:', error);
+      return res.status(500).json({ error: 'Error al registrar los datos' });
+    }
+    console.log('Datos registrados correctamente');
+    res.redirect(`/fichasMedicas`);
   });
 });
 
