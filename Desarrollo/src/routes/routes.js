@@ -138,7 +138,7 @@ const verificarTokenUser = async (req, res, next) => {
   }
 };
 
-router.use(['/user', '/registrarCita', '/perfil', '/registroMascota', '/registroMascota.html'], verificarTokenUser);
+router.use(['/user', '/registrarCita', '/perfil', '/registroMascota', '/registroMascota'], verificarTokenUser);
 
 const verificarTokenAdmin = async (req, res, next) => {
   const token = req.cookies.jwt;
@@ -258,7 +258,7 @@ router.get('/registroMascota', async (req, res) => {
   });
 });
 
-router.post('/registroMascota.html', upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'evidence', maxCount: 1 }]), async (req, res) => {
+router.post('/registroMascota', upload.fields([{ name: 'photo', maxCount: 1 }, { name: 'evidence', maxCount: 1 }]), async (req, res) => {
   const usuarioId = req.usuarioId;
   console.log(usuarioId);
   const { nombre, tipo, raza, sexo, fecha } = req.body;
