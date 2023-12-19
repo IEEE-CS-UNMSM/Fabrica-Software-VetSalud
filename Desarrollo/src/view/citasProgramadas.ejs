@@ -16,22 +16,18 @@
             <div class="contenedor">
                 <div class="ingreso-container">
                     <h2>Ficha Médica</h2>
-                    <form class="ingreso-form" action="/registrarFicha" method="post">
-
-                            <div class="nombre">
-                                <input type="text" id="chequeo" name="chequeo" placeholder="Antecedentes" required>
-                            </div>
-
-                            <div class="nombre">
-                                <input type="text" id="diag" name="diag" placeholder="Diagnóstico" required>
-                            </div>
-
-                            <div class="nombre">
-                                <input type="text" id="trat" name="trat" placeholder="Tratamiento" required>
-                            </div>
-        
-                            <button id="btnIngresar" type="submit" >Guardar</button>
-                        </form>
+                    <form class="ingreso-form" action="/registrarFicha/<% %>" method="post">
+                        <div class="nombre">
+                            <input type="text" id="chequeo" name="chequeo" placeholder="Antecedentes" required>
+                        </div>
+                        <div class="nombre">
+                            <input type="text" id="diag" name="diag" placeholder="Diagnóstico" required>
+                        </div>
+                        <div class="nombre">
+                            <input type="text" id="trat" name="trat" placeholder="Tratamiento" required>
+                        </div>
+                         <button id="btnIngresar" type="button" onclick="enviarForm()" >Guardar</button>
+                    </form>
                 </div>
             </div>
             <button id="cerrar-popup">Cerrar</button>
@@ -51,24 +47,6 @@
 		src="https://kit.fontawesome.com/81581fb069.js"
 		crossorigin="anonymous"
 	></script>
-
-    <script>
-        var citaId;
-        $(document).ready(function() {
-            $(document).on('click', '#cerrar-popup', function() {
-            $('#overlay').hide();
-            mensaje.close();
-        });
-            
-        });
-        $('#calendar').on('selectEvent', function(event, activeEvent) {
-            
-            $('#overlay').show();
-            citaId = activeEvent.id;
-            console.log(citaId);
-            mensaje.showModal();
-        });
-    </script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="js/schedule.js"> </script>
     

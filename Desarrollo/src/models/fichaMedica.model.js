@@ -9,18 +9,19 @@ function guardarFichaMedica(fichaMedica, callback) {
     }
 
     const query = `
-      INSERT INTO TB_FICHA_MEDICA (ID_MASCOTA, FECHA_CREACION, ANTECEDENTES, GRUPO_SANGUINEO, DIAGNOSTICO, TRATAMIENTO)
-      VALUES (?, ?, ?, ?, ?, ?);`;
+      INSERT INTO TB_FICHA_MEDICA (ID_CITA, FECHA_CREACION, ANTECEDENTES, DIAGNOSTICO, TRATAMIENTO)
+      VALUES (?, ?, ?, ?, ?);`;
 
-    const { idMascota, fechaCreacion, antecedentes, grupoSanguineo, diagnostico, tratamiento } = fichaMedica;
+      const { citaId, fecha, antc, diag, trat } = fichaMedica;
 
-    connection.query(
-      query,
-      [idMascota, fechaCreacion, antecedentes, grupoSanguineo, diagnostico, tratamiento],
+      connection.query(
+        query,
+        [citaId, fecha, antc, diag, trat],
       (err, results) => {
         connection.end();
 
         if (err) {
+          console.log(err);
           return callback(err, null);
         }
 

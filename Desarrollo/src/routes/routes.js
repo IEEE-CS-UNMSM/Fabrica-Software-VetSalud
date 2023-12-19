@@ -308,16 +308,13 @@ router.post('/registrarCita', async (req, res) => {
   });
 });
 
-router.post('/registrarFicha`;', async (req, res) => {
-  const citaId = req.query.citaId;
-  console.log(usuarioId);
+router.post('/registrarFicha', async (req, res) => {
+  const { citaId, fecha, antc, diag, trat } = req.body;
 
-  const { chequeo, diag, trat } = req.body;
-
-  console.log('Datos recibidos:', { usuarioId, chequeo, diag, trat });
+  console.log('Datos recibidos:', { citaId, fecha, antc, diag, trat });
 
 
-  FichaMedicaController.guardarFichaMedica(usuarioId, chequeo, diag, trat, (error, resultado) => {
+  FichaMedicaController.guardarFichaMedica(req, res,{citaId, fecha, antc, diag, trat}, (error, resultado) => {
     if (error) {
       console.error('Error al registrar los datos:', error);
       return res.status(500).json({ error: 'Error al registrar los datos' });
