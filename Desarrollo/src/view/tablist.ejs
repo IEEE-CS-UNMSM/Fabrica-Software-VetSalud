@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include ("templates/head.ejs", {titulo: 'Historial Médico', css: '/css/tablist.css'}) %>
+</head>
+<body>
+    <%- include ("templates/admin.header.ejs") %>;
+    <div class="content-container">
+        <h1 class="titulo">Historial de fichas médicas</h1>
+        <div class="search-bar">
+            <input type="text" id="busqueda" class="search-input" placeholder="Buscar mascota...">
+            <button id="buscar" onclick="buscar()">
+                <i class="fas fa-search"></i> <!-- Ícono de búsqueda -->
+            </button>
+        </div>
+        <table class="customer-tabla">
+            <thead>
+                <tr>
+                    <th class="tabla-header">N°</th>
+                    <th class="tabla-header">Nombre Mascota</th>
+                    <th class="tabla-header">Propietario</th>
+                    <th class="tabla-header">Fecha</th>
+                    <th class="tabla-header">Detalles</th>
+                    <th class="tabla-header">Acción </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% num = 1; %>
+                <% ficha.forEach(function(ficha) { %>
+                    <tr id="<%= ficha.ID %>" class="tabla-row">
+                        <td class="tabla-cell"><%= num  %></td>
+                        <td class="tabla-cell"><%= ficha['Nombre Mascota'] %></td>
+                        <td class="tabla-cell"><%= ficha.Propietario %></td>
+                        <td class="tabla-cell"><%= ficha.Fecha %></td>
+                        <td class="tabla-cell"><%= ficha['Detalle consulta'] %></td>
+                        <td class="tabla-cell">
+                            <a href="#" class="detalles-abrir" data-ficha-id="<%= ficha.IdFicha %>" data-diagnostico="<%= ficha.Diagnostico %>" data-tratamiento="<%= ficha.Tratamiento %>" data-antecedentes="<%= ficha.Antecedentes %>">
+                               <i title="Ver más" class="fa-solid fa-bars detalles-abrir"></i>
+                            </a>
+                        </td>
+                         
+                    </tr>
+                    <% num = num + 1; %>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <dialog id="mensaje">
+        <div id="detalleConsulta">
+            <h1>Detalles de Consulta</h1>
+            <form class="detalle-form" action="/fichasMedicas" method="post"></form>
+                <div class="datoP">
+                    <label for="antecedente"><strong>Antecedentes : </strong><span id="antecedente"><%= ficha.Antecedentes %></span></label>
+                </div>
+                <div class="datoP">
+                    <label for="diagnostico"><strong>Diagnostico : </strong><span id="diagnostico"><%= ficha.Diagnostico %></span></label>
+                </div>
+                <div class="datoP">
+                    <label for="tratamiento"><strong>Tratamiento : </strong><span id="tratamiento"><%= ficha.Tratamiento %></span></label>
+                </div>
+        </div>
+        <a href="#">
+            <button id="aceptar">Aceptar</button>
+        </a>
+    </dialog>
+
+    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+		<!-- custom js file link  -->
+		<script src="/js/tablist.js"></script>
+        <script src="/js/details-tablist.js"></script>
+  </body>
+</html>
